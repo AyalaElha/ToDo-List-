@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using ToDoApi;
 
 var builder = WebApplication.CreateBuilder(args);
+//var url;
 
 // הוספת תמיכה ב-CORS
 builder.Services.AddCors(options =>
@@ -62,6 +63,7 @@ app.MapPut("/tasks/{id:int}", async (int id, Item updatedTask, ToDoDbContext db)
     if (task is null) return Results.NotFound();
 
     task.Name = updatedTask.Name;
+    task.IsComplete = updatedTask.IsComplete;
     await db.SaveChangesAsync();
     return Results.Ok(task);
 });
