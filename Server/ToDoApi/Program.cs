@@ -25,7 +25,7 @@ builder.Services.AddDbContext<ToDoDbContext>(options =>
 var app = builder.Build();
 
 // מפת דרכים
-app.MapGet("/", () => "ToDo API");
+app.MapGet("/", () => "ToDo API is Running!");
 
 // שליפת כל המשימות
 app.MapGet("/tasks", async (ToDoDbContext db) =>
